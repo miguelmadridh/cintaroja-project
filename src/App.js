@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import AddProduct from "./Containers/Products/AddProduct";
 import ManageProducts from "./Containers/Products/ManageProducts";
 import HeaderNav from "./Components/HeaderNav";
@@ -28,21 +28,15 @@ function App() {
         <div class="row tm-row"></div>
         <div className="App">
           <HeaderNav />
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/addProduct" component={AddProduct}></Route>
-              <Route
-                exact
-                path="/manageProduct"
-                component={ManageProducts}
-              ></Route>
-                     <Route
-                exact
-                path="/analisis"
-                component={AnalisisContainer}
-              ></Route>
-            </Switch>
-          </BrowserRouter>
+          <HashRouter basename="/">
+            <Route exact path="/addProduct" component={AddProduct}></Route>
+            <Route
+              exact
+              path="/manageProduct"
+              component={ManageProducts}
+            ></Route>
+            <Route exact path="/analisis" component={AnalisisContainer}></Route>
+          </HashRouter>
         </div>
       </main>
     </div>
