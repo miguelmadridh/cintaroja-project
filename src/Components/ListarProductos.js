@@ -20,6 +20,7 @@ const ListarProductos = () => {
     <div>
       {products ? (
         Object.keys(products).map((id) => (
+       
           <Product
             key={id}
             id ={id}
@@ -28,6 +29,7 @@ const ListarProductos = () => {
             titulo={products[id].titulo}
             precio={products[id].precio}
           />
+         
         ))
       ) : (
         <h3>No hay productos</h3>
