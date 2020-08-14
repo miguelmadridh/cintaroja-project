@@ -1,22 +1,25 @@
 import React from "react";
 
 const Product = (props) => {
-
-  const { id, catId, catName, titulo, precio } = props;
+  const { id, catId, catName, titulo, precio,deleteProduct } = props;
   return (
-    <div className="card mb-4">
-      <h5 className="card-header">
-        {id}  |  {titulo}
-      </h5>
-      <div className="card-body">
-        <h5 className="card-title">
-          Categoria: {catId}  |  {catName}{" "}
-        </h5>
-        <p className="card-text">
-          <h6>Precio $ {precio} </h6>
-        </p>
-      </div>
-    </div>
+    
+      <tr>
+        <td>
+          {catId} | {catName}
+        </td>
+        <td>
+          {id} | {titulo}
+        </td>
+        <td>$ {precio} </td>
+
+        <td>
+          <button type="button" onClick={()=>deleteProduct(id)} class="btn btn-danger">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    
   );
 };
 

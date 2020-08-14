@@ -1,19 +1,25 @@
-import React from 'react'
-import ListarProductos from '../../Components/ListarProductos'
+import React from "react";
+import { HashRouter, Link } from "react-router-dom";
+import ListarProductos from "../../Components/ListarProductos";
 
 const ManageProducts = () => {
-    return (
-        <div className="container">
-            <div style ={{paddingTop:1 +"rem",paddingBottom:1 +"rem"}}>
-            <h2>Admon. Productos</h2>
-            </div>
-            <a href="/addProduct"><button  type="button" className="btn btn-primary">Agregar Producto</button></a>
-            <div style ={{paddingTop:1 +"rem",paddingBottom:1 +"rem"}}>
-            <ListarProductos />
-            </div>
-        </div>
+  return (
+    <div className="container">
+      <div style={{ paddingTop: 1 + "rem", paddingBottom: 1 + "rem" }}>
+        <h2>Admon. Productos</h2>
+      </div>
+      <HashRouter basename="/">
+        <Link to="/addProduct">
+          <button type="button" className="btn btn-primary">
+            Agregar Producto
+          </button>
+        </Link>
+      </HashRouter>
+      <div style={{ paddingTop: 1 + "rem", paddingBottom: 1 + "rem" }}>
+        <ListarProductos />
+      </div>
+    </div>
+  );
+};
 
-    )
-}
-
-export default ManageProducts
+export default ManageProducts;

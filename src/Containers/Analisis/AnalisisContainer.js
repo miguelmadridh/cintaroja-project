@@ -20,20 +20,21 @@ const AnalisisContainer = () => {
         arregloPrecios.push(object[value].price);
       });
 
-      let sum = arregloPrecios
-        .slice(0, 50)
-        .reduce((previous, current) => (current += previous));
-      setAvg(sum / arregloPrecios.length);
-      setMax(Math.max(...arregloPrecios));
-      setMin(Math.min(...arregloPrecios));
+      if (arregloPrecios.length > 0) {
+        let sum = arregloPrecios
+          .slice(0, 50)
+          .reduce((previous, current) => (current += previous));
+        setAvg(Math.round(sum / arregloPrecios.length));
+        setMax(Math.round(Math.max(...arregloPrecios)));
+        setMin(Math.round(Math.min(...arregloPrecios)));
+      }
     }
   }
   const getProductPrice = (data) => {
-      Axios.get(URL + data)
-        .then((res) => setProducts(res.data))
-        .catch((error) => alert(error));
-      getPreciosArray();
-  
+    Axios.get(URL + data)
+      .then((res) => setProducts(res.data))
+      .catch((error) => alert(error));
+    getPreciosArray();
   };
 
   return (
