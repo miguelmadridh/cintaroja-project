@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AddProductComponent } from "../../Components/AddProductComponent";
+import { HashRouter, Link } from "react-router-dom";
 import Axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -7,7 +8,7 @@ import Button from "react-bootstrap/Button";
 const AddProduct = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  
+
   const addNewProduct = (categoria, precio, titulo) => {
     const URL = "https://devf-test-miguel.firebaseio.com/product.json";
     const currentProduct = {
@@ -19,8 +20,9 @@ const AddProduct = () => {
 
     Axios.post(URL, currentProduct)
       .then(() => {
-        console.log(categoria.id)
-        setShow(true)})
+        console.log(categoria.id);
+        setShow(true);
+      })
       .catch((error) => alert(error));
   };
 
@@ -29,11 +31,13 @@ const AddProduct = () => {
       <div style={{ paddingTop: 1 + "rem", paddingBottom: 1 + "rem" }}>
         <h2>Agregar. Productos</h2>
       </div>
-      <a href="/manageProduct">
-        <button type="button" className="btn btn-primary">
-          Admon. Productos
-        </button>
-      </a>
+      <HashRouter basename="/">
+        <Link to="/manageProduct">
+          <button type="button" className="btn btn-primary">
+            Admon. Productos
+          </button>
+        </Link>
+      </HashRouter>
       <AddProductComponent createProduct={addNewProduct} />
 
       <Modal show={show} onClick={handleClose}>
